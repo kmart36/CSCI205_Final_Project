@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+group 'org.catJAM'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "16"
+    modules = [ 'javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "REPLACE"
+}
