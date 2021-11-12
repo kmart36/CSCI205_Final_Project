@@ -18,5 +18,9 @@
  */
 package CheckersModel;
 
+import java.util.ArrayList;
+
 public class Board {
+    private int[][] theBoard = new int[8][8];
+
 }
