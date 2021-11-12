@@ -5,21 +5,18 @@
  *
  * Name: Katy Martinson
  * Section: 9:30am
- * Date: 11/9/2021
- * Time: 5:58 PM
+ * Date: 11/12/2021
+ * Time: 10:11 AM
  *
  * Project: csci205_final_project
- * Package: main
- * Class: Main
+ * Package: PACKAGE_NAME
+ * Class: CheckersController
  *
  * Description:
  *
  * ****************************************
  */
-package main;
 
-public class Main {
-    public static void main(String args[]) {
-        System.out.println("Hello, World!");
-    }
+public class CheckersController {
+
 }
