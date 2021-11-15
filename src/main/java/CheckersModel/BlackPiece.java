@@ -3,14 +3,14 @@
  * Fall 2021
  * Instructor: Prof. Brian King
  *
- * Name: Katy Martinson
- * Section: 9:30am
- * Date: 11/12/2021
- * Time: 10:12 AM
+ * Name: Phil Morgan
+ * Section: 02 - 9:50am
+ * Date: 11/15/2021
+ * Time: 10:04 AM
  *
  * Project: csci205_final_project
  * Package: CheckersModel
- * Class: KingPiece
+ * Class: BlackPiece
  *
  * Description:
  *
@@ -18,24 +18,25 @@
  */
 package CheckersModel;
 
-public class KingPiece extends Piece{
-
+public class BlackPiece extends Piece{
     private int xLocation;
     private int yLocation;
     private String color;
 
-    public KingPiece() {
+    public BlackPiece() {
         super();
-        color = super.getColor();
+        color = "BLACK";
     }
 
-    public KingPiece(int xLoc, int yLoc) {
+    public BlackPiece(int xLoc, int yLoc) {
         super();
-        color = super.getColor();
+        color = "BLACK";
     }
 
     @Override
     public void move(int x, int y) {
-        super.move(x, y);
+        if (y > yLocation) { // this line can be changed to reflect which side of the board Black is on
+            super.move(x, y);
+        }
     }
 }
