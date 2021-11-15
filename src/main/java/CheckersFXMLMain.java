@@ -19,15 +19,14 @@ public class CheckersFXMLMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        // Load in the FXML file and obtain a root node of the scene graph.(Code from lab11)
+        // Load in the FXML file and obtain the root node of the scene graph.(Code from lab11)
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/checkersfxml.fxml"));
         Parent root = loader.load();
 
-        // Set up our stage.(Code from lab11)
+        // Set up our stage(Code from lab11)
         primaryStage.setTitle("Play Checkers!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
 }
