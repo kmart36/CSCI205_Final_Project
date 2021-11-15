@@ -28,5 +28,6 @@ public class CheckersFXMLMain extends Application {
         primaryStage.setTitle("Play Checkers!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
     }
 }
