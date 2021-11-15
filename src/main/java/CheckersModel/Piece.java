@@ -19,4 +19,22 @@
 package CheckersModel;
 
 public class Piece {
+    private int[] location;
+    private String color;
+
+    public Piece(int[] loc, String col) {
+        location = loc;
+        color = col;
+    }
+
+    public void updateLocation(int x, int y) {
+        location[0] = x;
+        location[1] = y;
+    }
+
+    public int getXPos() {return location[0];}
+
+    public int getYPos() {return location[1];}
+
+    public String getColor() {return color;}
 }

@@ -27,5 +27,5 @@ test {
 }
 
 application {
-    mainClassName = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "REPLACE"
+    mainClassName = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "CheckersFXMLMain"
 }
