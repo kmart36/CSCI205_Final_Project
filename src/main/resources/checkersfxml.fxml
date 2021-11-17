@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CheckersController">
    <children>
@@ -77,10 +78,118 @@
             <Rectangle fx:id="rect64" fill="#ff1100" height="45.0" smooth="false" stroke="BLACK" strokeType="INSIDE" width="45.0" />
          </children>
       </FlowPane>
+      <FlowPane prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="red1" fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="62.0" right="50.0" top="27.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="-6.0" layoutY="-6.0" prefHeight="419.0" prefWidth="407.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="red2" fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="152.0" right="50.0" top="27.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="4.0" layoutY="4.0" prefHeight="419.0" prefWidth="407.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="red3" fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="242.0" right="50.0" top="27.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="4.0" layoutY="4.0" prefHeight="419.0" prefWidth="407.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="red4" fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="332.0" right="50.0" top="27.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
       <Button fx:id="btnStart" layoutX="408.0" layoutY="174.0" mnemonicParsing="false" text="Start" AnchorPane.bottomAnchor="190.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="190.0">
          <font>
             <Font name="Cambria" size="12.0" />
          </font>
       </Button>
+      <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="red5" fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="62.0" right="50.0" top="117.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="red6" fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="152.0" right="50.0" top="117.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="242.0" right="50.0" top="117.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="332.0" right="50.0" top="117.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="10.0" layoutY="10.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="17.0" right="50.0" top="72.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="20.0" layoutY="20.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="107.0" right="50.0" top="72.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="30.0" layoutY="30.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="197.0" right="50.0" top="72.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="40.0" layoutY="40.0" prefHeight="403.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fill="#a80000" radius="17.0" stroke="BLACK" strokeType="INSIDE">
+               <FlowPane.margin>
+                  <Insets bottom="30.0" left="287.0" right="50.0" top="72.5" />
+               </FlowPane.margin>
+            </Circle>
+         </children>
+      </FlowPane>
    </children>
 </AnchorPane>

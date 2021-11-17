@@ -1,4 +1,6 @@
+import CheckersModel.BlackPiece;
 import CheckersModel.Piece;
+import CheckersModel.RedPiece;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +12,8 @@ import java.io.IOException;
 public class CheckersFXMLMain extends Application {
 
     /** Create the players */
-    private Piece player1;
-    private Piece player2;
+    private BlackPiece player1;
+    private RedPiece player2;
 
     public static void main(String[] args) {
         launch(args);
