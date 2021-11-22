@@ -20,7 +20,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class CheckersController {
@@ -32,10 +34,49 @@ public class CheckersController {
     private URL location;
 
     @FXML
+    private Circle black1;
+
+    @FXML
+    private Circle black10;
+
+    @FXML
+    private Circle black11;
+
+    @FXML
+    private Circle black12;
+
+    @FXML
+    private Circle black2;
+
+    @FXML
+    private Circle black3;
+
+    @FXML
+    private Circle black4;
+
+    @FXML
+    private Circle black5;
+
+    @FXML
+    private Circle black6;
+
+    @FXML
+    private Circle black7;
+
+    @FXML
+    private Circle black8;
+
+    @FXML
+    private Circle black9;
+
+    @FXML
     private Button btnStart;
 
     @FXML
-    private FlowPane fPane;
+    private GridPane grid;
+
+    @FXML
+    private Label lblTurn;
 
     @FXML
     private Rectangle rect1;
@@ -230,9 +271,58 @@ public class CheckersController {
     private Rectangle rect9;
 
     @FXML
+    private Circle red1;
+
+    @FXML
+    private Circle red10;
+
+    @FXML
+    private Circle red11;
+
+    @FXML
+    private Circle red12;
+
+    @FXML
+    private Circle red2;
+
+    @FXML
+    private Circle red3;
+
+    @FXML
+    private Circle red4;
+
+    @FXML
+    private Circle red5;
+
+    @FXML
+    private Circle red6;
+
+    @FXML
+    private Circle red7;
+
+    @FXML
+    private Circle red8;
+
+    @FXML
+    private Circle red9;
+
+    @FXML
     void initialize() {
+        assert black1 != null : "fx:id=\"black1\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black10 != null : "fx:id=\"black10\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black11 != null : "fx:id=\"black11\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black12 != null : "fx:id=\"black12\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black2 != null : "fx:id=\"black2\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black3 != null : "fx:id=\"black3\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black4 != null : "fx:id=\"black4\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black5 != null : "fx:id=\"black5\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black6 != null : "fx:id=\"black6\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black7 != null : "fx:id=\"black7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black8 != null : "fx:id=\"black8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert black9 != null : "fx:id=\"black9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert btnStart != null : "fx:id=\"btnStart\" was not injected: check your FXML file 'checkersfxml.fxml'.";
-        assert fPane != null : "fx:id=\"fPane\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert grid != null : "fx:id=\"grid\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert lblTurn != null : "fx:id=\"lblTurn\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert rect1 != null : "fx:id=\"rect1\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert rect10 != null : "fx:id=\"rect10\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert rect11 != null : "fx:id=\"rect11\" was not injected: check your FXML file 'checkersfxml.fxml'.";
@@ -297,7 +387,17 @@ public class CheckersController {
         assert rect7 != null : "fx:id=\"rect7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert rect8 != null : "fx:id=\"rect8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert rect9 != null : "fx:id=\"rect9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
-
+        assert red1 != null : "fx:id=\"red1\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red10 != null : "fx:id=\"red10\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red11 != null : "fx:id=\"red11\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red12 != null : "fx:id=\"red12\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red2 != null : "fx:id=\"red2\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red3 != null : "fx:id=\"red3\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red4 != null : "fx:id=\"red4\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red5 != null : "fx:id=\"red5\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red6 != null : "fx:id=\"red6\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red7 != null : "fx:id=\"red7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red8 != null : "fx:id=\"red8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
     }
-
 }
