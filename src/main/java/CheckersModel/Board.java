@@ -21,7 +21,32 @@ package CheckersModel;
 import java.util.ArrayList;
 
 public class Board {
-    private int[][] theBoard = new int[8][8];
+    private Piece[][] theBoard = new Piece[8][8];
+    private State gameState;
 
+    private enum State {
+        NOT_STARTED, PLAYING, FINISHED
+    }
 
+    public Board() {
+        this.gameState = State.NOT_STARTED;
+    }
+
+    public void move(Piece piece, int row, int col) {
+        theBoard[piece.getXPos()][piece.getYPos()] = null;
+        piece.move(row, col);
+        theBoard[row][col] = piece;
+    }
+
+    public void reset() {
+        this.gameState = State.NOT_STARTED;
+    }
+
+    public void changeState(State newState) {
+        this.gameState = newState;
+    }
+
+    public Piece[][] getTheBoard() {
+        return this.theBoard;
+    }
 }

@@ -18,6 +18,36 @@
  */
 package CheckersModel;
 
+import java.util.ArrayList;
+
 public class CheckersModel {
 
+    private final int NUM_SQUARES = 64;
+
+    private ArrayList<Piece> redPieces;
+
+    private ArrayList<Piece> blackPieces;
+
+    //private ArrayList<Space> spaces;
+
+    private Board theBoard;
+
+    public CheckersModel() {
+        for (int i = 0; i < theBoard.getTheBoard().length; i++) {
+            for (int j = 0; j < theBoard.getTheBoard().length; j++) {
+                //switch(i) {
+
+                //}
+
+            }
+        }
+    }
+
+    public ArrayList<Piece> getBlackPieces() {
+        return blackPieces;
+    }
+
+    public ArrayList<Piece> getRedPieces() {
+        return redPieces;
+    }
 }
