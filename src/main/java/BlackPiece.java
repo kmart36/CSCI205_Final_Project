@@ -16,20 +16,23 @@
  *
  * ****************************************
  */
-package CheckersModel;
+
+import javafx.scene.shape.Circle;
 
 public class BlackPiece extends Piece{
-    private int xLocation;
-    private int yLocation;
+    private double xLocation;
+    private double yLocation;
     private String color;
+    private Circle piece;
 
     public BlackPiece() {
         super();
         color = "BLACK";
     }
 
-    public BlackPiece(int xLoc, int yLoc) {
+    public BlackPiece(Circle piece, double xLoc, double yLoc) {
         super();
+        this.piece = piece;
         color = "BLACK";
     }
 

@@ -16,20 +16,24 @@
  *
  * ****************************************
  */
-package CheckersModel;
+
+import javafx.scene.shape.Circle;
 
 public class RedPiece extends Piece{
-    private int xLocation;
-    private int yLocation;
+    private double xLocation;
+    private double yLocation;
     private String color;
+    private Circle piece;
 
     public RedPiece() {
         super();
+        piece = new Circle();
         color = "RED";
     }
 
-    public RedPiece(int xLoc, int yLoc) {
+    public RedPiece(Circle piece, double xLoc, double yLoc) {
         super();
+        this.piece = piece;
         color = "RED";
     }
 
