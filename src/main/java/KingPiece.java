@@ -10,42 +10,31 @@
  *
  * Project: csci205_final_project
  * Package: CheckersModel
- * Class: Piece
+ * Class: KingPiece
  *
  * Description:
  *
  * ****************************************
  */
-package CheckersModel;
 
-public class Piece {
+public class KingPiece extends Piece{
+
     private int xLocation;
     private int yLocation;
     private String color;
 
-    public Piece() {
-        xLocation = 0;
-        yLocation = 0;
+    public KingPiece() {
+        super();
+        color = super.getColor();
     }
 
-    public Piece(int xLoc, int yLoc) {
-        xLocation = xLoc;
-        yLocation = yLoc;
-
+    public KingPiece(double xLoc, double yLoc) {
+        super();
+        color = super.getColor();
     }
 
-    private void updateLocation(int x, int y) {
-        xLocation = x;
-        yLocation = y;
-    }
-
-    public int getXPos() {return xLocation;}
-
-    public int getYPos() {return yLocation;}
-
-    public String getColor() {return color;}
-
+    @Override
     public void move(int x, int y) {
-        updateLocation(x, y);
+        super.move(x, y);
     }
 }
