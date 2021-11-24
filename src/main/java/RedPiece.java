@@ -20,9 +20,9 @@
 import javafx.scene.shape.Circle;
 
 public class RedPiece extends Piece{
-    private double xLocation;
-    private double yLocation;
-    private String color;
+//    private double xLocation;
+//    private double yLocation;
+//    private String color;
     private Circle piece;
 
     public RedPiece() {
@@ -32,10 +32,11 @@ public class RedPiece extends Piece{
     }
 
     public RedPiece(Circle piece, double xLoc, double yLoc) {
-        super();
+        super(xLoc, yLoc);
         this.piece = piece;
         color = "RED";
     }
+
 
     @Override
     public void move(int x, int y) {

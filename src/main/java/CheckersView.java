@@ -17,9 +17,6 @@
  * ****************************************
  */
 
-import CheckersModel.CheckersModel;
-import CheckersModel.RedPiece;
-import CheckersModel.BlackPiece;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

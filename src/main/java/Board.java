@@ -16,7 +16,7 @@
  *
  * ****************************************
  */
-package CheckersModel;
+
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class Board {
     }
 
     public void move(Piece piece, int row, int col) {
-        theBoard[piece.getXPos()][piece.getYPos()] = null;
+        theBoard[(int) piece.getXPos()][(int) piece.getYPos()] = null;
         piece.move(row, col);
         theBoard[row][col] = piece;
     }

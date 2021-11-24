@@ -20,9 +20,9 @@
 import javafx.scene.shape.Circle;
 
 public class BlackPiece extends Piece{
-    private double xLocation;
-    private double yLocation;
-    private String color;
+//    private double xLocation;
+//    private double yLocation;
+//    private String color;
     private Circle piece;
 
     public BlackPiece() {
@@ -31,7 +31,7 @@ public class BlackPiece extends Piece{
     }
 
     public BlackPiece(Circle piece, double xLoc, double yLoc) {
-        super();
+        super(xLoc, yLoc);
         this.piece = piece;
         color = "BLACK";
     }

@@ -18,9 +18,9 @@
  */
 
 public class Piece {
-    private double xLocation;
-    private double yLocation;
-    private String color;
+    protected double xLocation;
+    protected double yLocation;
+    protected String color;
 
     public Piece() {
         xLocation = 0;
@@ -33,7 +33,7 @@ public class Piece {
 
     }
 
-    private void updateLocation(int x, int y) {
+    private void updateLocation(double x, double y) {
         xLocation = x;
         yLocation = y;
     }
