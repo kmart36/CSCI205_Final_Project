@@ -21,25 +21,7 @@ package CheckersModel;
 import java.util.ArrayList;
 
 public class Board {
-    private Space[][] board;
+    private int[][] theBoard = new int[8][8];
 
-    public Board() {
-        this.board = new Space[8][8];
-    }
-
-    public void createSpaces(){
-        for( int r = 0; r < 8; r++){
-            for (int c = 0; c < 8; c++){
-                if ((r%2 == 0 && c%2 == 0) || (r%2 == 1 && c%2 == 1)){
-                    board[r][c] = new Space(false, "RED");
-                    System.out.println(board[r][c]);
-                }
-                else {
-                    board[r][c] = new Space(false, "BLACK");
-                }
-
-            }
-        }
-    }
 
 }

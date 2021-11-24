@@ -1,4 +1,3 @@
-import CheckersModel.Piece;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,9 +8,8 @@ import java.io.IOException;
 
 public class CheckersFXMLMain extends Application {
 
-    /** Create the players */
-    private Piece player1;
-    private Piece player2;
+    private CheckersModel theModel;
+    private CheckersController theController;
 
     public static void main(String[] args) {
         launch(args);
@@ -23,6 +21,12 @@ public class CheckersFXMLMain extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/checkersfxml.fxml"));
         Parent root = loader.load();
+        theModel = new CheckersModel();
+
+
+
+        BlackPiece player1 = new BlackPiece();
+        RedPiece red1 = new RedPiece();
 
         // Set up our stage(Code from lab11)
         primaryStage.setTitle("Play Checkers!");

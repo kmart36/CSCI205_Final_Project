@@ -5,18 +5,21 @@
  *
  * Name: Katy Martinson
  * Section: 9:30am
- * Date: 11/12/2021
- * Time: 10:11 AM
+ * Date: 11/21/2021
+ * Time: 10:33 PM
  *
  * Project: csci205_final_project
  * Package: PACKAGE_NAME
- * Class: CheckersController
+ * Class: CheckersView
  *
  * Description:
  *
  * ****************************************
  */
 
+import CheckersModel.CheckersModel;
+import CheckersModel.RedPiece;
+import CheckersModel.BlackPiece;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,9 +28,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class CheckersController {
+public class CheckersView {
 
     @FXML
     private ResourceBundle resources;
@@ -401,33 +405,23 @@ public class CheckersController {
         assert red7 != null : "fx:id=\"red7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red8 != null : "fx:id=\"red8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+    }
 
-        // Initialize all of the red pieces as redPiece's
-        RedPiece red1 = new RedPiece(this.red1, this.red1.getCenterX(), this.red1.getCenterY());
-        RedPiece red2 = new RedPiece(this.red2, this.red2.getCenterX(), this.red2.getCenterY());
-        RedPiece red3 = new RedPiece(this.red3, this.red3.getCenterX(), this.red3.getCenterY());
-        RedPiece red4 = new RedPiece(this.red4, this.red4.getCenterX(), this.red4.getCenterY());
-        RedPiece red5 = new RedPiece(this.red5, this.red5.getCenterX(), this.red5.getCenterY());
-        RedPiece red6 = new RedPiece(this.red6, this.red6.getCenterX(), this.red6.getCenterY());
-        RedPiece red7 = new RedPiece(this.red7, this.red7.getCenterX(), this.red7.getCenterY());
-        RedPiece red8 = new RedPiece(this.red8, this.red8.getCenterX(), this.red8.getCenterY());
-        RedPiece red9 = new RedPiece(this.red9, this.red9.getCenterX(), this.red9.getCenterY());
-        RedPiece red10 = new RedPiece(this.red10, this.red10.getCenterX(), this.red10.getCenterY());
-        RedPiece red11 = new RedPiece(this.red11, this.red11.getCenterX(), this.red11.getCenterY());
-        RedPiece red12 = new RedPiece(this.red12, this.red12.getCenterX(), this.red12.getCenterY());
+    private ArrayList<Circle> redPieces;
 
-        // Initialize all of the black pieces as blackPiece's
-        BlackPiece black1 = new BlackPiece(this.black1, this.black1.getCenterX(), this.black1.getCenterY());
-        BlackPiece black2 = new BlackPiece(this.black2, this.black2.getCenterX(), this.black2.getCenterY());
-        BlackPiece black3 = new BlackPiece(this.black3, this.black3.getCenterX(), this.black3.getCenterY());
-        BlackPiece black4 = new BlackPiece(this.black4, this.black4.getCenterX(), this.black4.getCenterY());
-        BlackPiece black5 = new BlackPiece(this.black5, this.black5.getCenterX(), this.black5.getCenterY());
-        BlackPiece black6 = new BlackPiece(this.black6, this.black6.getCenterX(), this.black6.getCenterY());
-        BlackPiece black7 = new BlackPiece(this.black7, this.black7.getCenterX(), this.black7.getCenterY());
-        BlackPiece black8 = new BlackPiece(this.black8, this.black8.getCenterX(), this.black8.getCenterY());
-        BlackPiece black9 = new BlackPiece(this.black9, this.black9.getCenterX(), this.black9.getCenterY());
-        BlackPiece black10 = new BlackPiece(this.black10, this.black10.getCenterX(), this.black10.getCenterY());
-        BlackPiece black11 = new BlackPiece(this.black11, this.black11.getCenterX(), this.black11.getCenterY());
-        BlackPiece black12 = new BlackPiece(this.black12, this.black12.getCenterX(), this.black12.getCenterY());
+    private ArrayList<Circle> blackPieces;
+
+    private ArrayList<Rectangle> spaces;
+
+    private CheckersModel theModel;
+
+    public CheckersView(CheckersModel theModel) {
+        this.theModel = theModel;
+        this.grid = new GridPane();
+
+    }
+
+    public void initializeBoard() {
+        //for (RedPiece redPiece: )
     }
 }
