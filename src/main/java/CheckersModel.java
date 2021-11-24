@@ -40,3 +40,4 @@ public class CheckersModel {
         return redPieces.get(i);
     }
 }
+
