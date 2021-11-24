@@ -40,6 +40,7 @@ public class Space {
 
     public String getColor() { return this.color; }
 
+
     public String toString() {
         String s = "Space has color " + this.color + "and hasPiece is" + this.hasPiece;
         return s;
