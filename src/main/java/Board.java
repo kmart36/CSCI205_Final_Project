@@ -16,9 +16,6 @@
  *
  * ****************************************
  */
-package CheckersModel;
-
-import java.util.ArrayList;
 
 public class Board {
     private Piece[][] theBoard = new Piece[8][8];

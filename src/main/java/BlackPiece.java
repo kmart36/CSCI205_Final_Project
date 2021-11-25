@@ -20,21 +20,26 @@
 import javafx.scene.shape.Circle;
 
 public class BlackPiece extends Piece{
-    private double xLocation;
-    private double yLocation;
+    private int xLocation;
+    private int yLocation;
     private String color;
     private Circle piece;
 
     public BlackPiece() {
         super();
+        this.piece = new Circle();
         color = "BLACK";
     }
 
     public BlackPiece(Circle piece, double xLoc, double yLoc) {
-        super();
+        super(xLoc, yLoc);
         this.piece = piece;
         color = "BLACK";
     }
+
+    public Circle getPiece() { return this.piece; }
+
+    public void setPiece(Circle newPiece) { this.piece = newPiece; }
 
     @Override
     public void move(int x, int y) {

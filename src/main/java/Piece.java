@@ -18,8 +18,8 @@
  */
 
 public class Piece {
-    private double xLocation;
-    private double yLocation;
+    private int xLocation;
+    private int yLocation;
     private String color;
 
     public Piece() {
@@ -28,9 +28,8 @@ public class Piece {
     }
 
     public Piece(double xLoc, double yLoc) {
-        xLocation = xLoc;
-        yLocation = yLoc;
-
+        xLocation = (int)xLoc / 45;
+        yLocation = (int)yLoc / 45;
     }
 
     private void updateLocation(int x, int y) {
@@ -38,9 +37,9 @@ public class Piece {
         yLocation = y;
     }
 
-    public double getXPos() {return xLocation;}
+    public int getXPos() {return xLocation;}
 
-    public double getYPos() {return yLocation;}
+    public int getYPos() {return yLocation;}
 
     public String getColor() {return color;}
 

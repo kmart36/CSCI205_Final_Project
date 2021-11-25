@@ -15,16 +15,17 @@
  * ****************************************
  */
 
+import javafx.scene.shape.Circle;
+
 import java.util.ArrayList;
 
 public class CheckersModel {
     private ArrayList<RedPiece> redPieces;
     private ArrayList<BlackPiece> blackPieces;
-    private CheckersController theController;
 
     public CheckersModel() {
         this.redPieces = new ArrayList<>();
-        for(int i = 0; i < 12; i++){
+        for(int i = 0; i < 12; i++) {
             this.redPieces.add(new RedPiece());
         }
         this.blackPieces = new ArrayList<>();
@@ -33,11 +34,11 @@ public class CheckersModel {
         }
     }
 
-    public BlackPiece getBlackPiece(int i) {
-        return blackPieces.get(i);
+    public ArrayList<RedPiece> getRedPieces() {
+        return this.redPieces;
     }
-    public RedPiece getRedPiece(int i) {
-        return redPieces.get(i);
-    }
+
+    public BlackPiece getBlackPiece(int i) { return blackPieces.get(i); }
+    public RedPiece getRedPiece(int i) { return redPieces.get(i); }
 }
 

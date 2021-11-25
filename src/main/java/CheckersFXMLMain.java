@@ -23,8 +23,6 @@ public class CheckersFXMLMain extends Application {
         Parent root = loader.load();
         theModel = new CheckersModel();
 
-
-
         BlackPiece player1 = new BlackPiece();
         RedPiece red1 = new RedPiece();
 
