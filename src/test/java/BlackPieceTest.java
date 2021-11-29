@@ -1,7 +1,8 @@
 import javafx.scene.shape.Circle;
 import org.junit.jupiter.api.Test;
+import CheckersModel.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BlackPieceTest {
 

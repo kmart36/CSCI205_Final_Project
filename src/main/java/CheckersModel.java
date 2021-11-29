@@ -16,6 +16,9 @@
  */
 
 import java.util.ArrayList;
+import CheckersModel.*;
+
+
 
 public class CheckersModel {
     private ArrayList<RedPiece> redPieces;

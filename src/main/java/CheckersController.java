@@ -23,6 +23,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import CheckersModel.*;
+
+
 
 import java.net.URL;
 import java.util.ResourceBundle;

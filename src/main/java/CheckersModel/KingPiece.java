@@ -1,4 +1,4 @@
-/* *****************************************
+package CheckersModel;/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2021
  * Instructor: Prof. Brian King
@@ -10,14 +10,14 @@
  *
  * Project: csci205_final_project
  * Package: CheckersModel
- * Class: KingPiece
+ * Class: CheckersModel.KingPiece
  *
  * Description:
  *
  * ****************************************
  */
 
-public class KingPiece extends Piece{
+public class KingPiece extends Piece {
 
 //    private int xLocation;
 //    private int yLocation;
