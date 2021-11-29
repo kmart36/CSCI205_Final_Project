@@ -3,7 +3,7 @@
  * Fall 2021
  * Instructor: Prof. Brian King
  *
- * Name: Katy Martinson
+ * Name: Team01
  * Section: 9:30am
  * Date: 11/21/2021
  * Time: 10:33 PM
@@ -13,7 +13,7 @@
  * Class: CheckersView
  *
  * Description:
- *
+ * The View class for the checkers game
  * ****************************************
  */
 
@@ -29,14 +29,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/** The view class for the checkers game */
 public class CheckersView {
 
     @FXML
     private ResourceBundle resources;
 
+    /** Determines the location */
     @FXML
     private URL location;
 
+    /**
+     * Creates circles to act as black pieces on the board
+     */
     @FXML
     private Circle black1;
 
@@ -73,15 +78,21 @@ public class CheckersView {
     @FXML
     private Circle black9;
 
+    /** The start button */
     @FXML
     private Button btnStart;
 
+    /** The grid that acts as the board and the coordinate system for the pieces */
     @FXML
     private GridPane grid;
 
+    /** Label to show whose turn it is */
     @FXML
     private Label lblTurn;
 
+    /**
+     * Creates rectangles to be spaces on the checkerboard
+     */
     @FXML
     private Rectangle rect1;
 
@@ -310,6 +321,9 @@ public class CheckersView {
     @FXML
     private Circle red9;
 
+    /**
+     * Initializes the pieces and the squares on the board
+     */
     @FXML
     void initialize() {
         assert black1 != null : "fx:id=\"black1\" was not injected: check your FXML file 'checkersfxml.fxml'.";
@@ -405,20 +419,29 @@ public class CheckersView {
         assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
     }
 
+    /** An ArrayList to hold all of the red pieces */
     private ArrayList<Circle> redPieces;
 
+    /** An ArrayList to hold all of the black pieces */
     private ArrayList<Circle> blackPieces;
 
+    /** An ArrayList to hold all of the spaces (rectangles) */
     private ArrayList<Rectangle> spaces;
 
+    /** The model */
     private CheckersModel theModel;
 
+    /**
+     * View the model
+     * @param theModel
+     */
     public CheckersView(CheckersModel theModel) {
         this.theModel = theModel;
         this.grid = new GridPane();
 
     }
 
+    /** Initialize the board */
     public void initializeBoard() {
         //for (CheckersModel.RedPiece redPiece: )
     }
