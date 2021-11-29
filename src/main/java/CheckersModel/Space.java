@@ -21,7 +21,6 @@ package CheckersModel;
 public class Space {
 
     private boolean hasPiece;
-    //private int id;
     private String color;
     private boolean playable;
 
