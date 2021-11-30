@@ -21,20 +21,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CheckersController {
 
-    CheckersModel theModel;
+    private CheckersModel theModel;
 
-    ArrayList<RedPiece> redPieces;
+    private ArrayList<Circle> redCircles;
 
-    ArrayList<BlackPiece> blackPieces;
+    private ArrayList<Circle> blackCircles;
 
     @FXML
     private ResourceBundle resources;
@@ -315,10 +318,9 @@ public class CheckersController {
     @FXML
     private Circle red9;
 
-    boolean redTurn = true;
+    public boolean redTurn = true;
 
-    boolean gameStarted = false;
-
+    public boolean gameStarted = false;
 
     @FXML
     void initialize() {
@@ -413,36 +415,62 @@ public class CheckersController {
         assert red7 != null : "fx:id=\"red7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red8 != null : "fx:id=\"red8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        redCircles = new ArrayList<>();
+        blackCircles = new ArrayList<>();
+        List<Circle> tempRed = Arrays.asList(red1, red2, red3, red4, red5, red6, red7, red8, red9, red10, red11, red12);
+        redCircles.addAll(tempRed);
+        List<Circle> tempBlack = Arrays.asList(black1, black2, black3, black4, black5, black6, black7, black8, black9, black10, black11, black12);
+        blackCircles.addAll(tempBlack);
     }
 
-    public CheckersController(CheckersModel theModel) {
+    public void setModel(CheckersModel theModel) {
         this.theModel = theModel;
-        this.theModel.getRedPieces().get(0).setPiece(red1);
-        this.theModel.getRedPieces().get(1).setPiece(red2);
-        redPieces.add(new RedPiece(red1, grid.getChildren().indexOf(red1) % 8, grid.getChildren().indexOf(red1) / 8));
-        redPieces.add(new RedPiece(red2, grid.getChildren().indexOf(red2) % 8, grid.getChildren().indexOf(red2) / 8));
+        int i = 0;
+        for (RedPiece piece : theModel.getRedPieces()) {
+            piece.setPiece(redCircles.get(i));
+            i++;
+        }
+        int j = 0;
+        for (BlackPiece piece : theModel.getBlackPieces()) {
+            piece.setPiece(blackCircles.get(j));
+            j++;
+        }
     }
+
 
     public void initHandlers() {
-        this.btnStart.setOnAction(event -> gameStarted = true);
+        this.btnStart.setOnMouseClicked(event -> {
+            gameStarted = true;
+            lblTurn.setText("Red Player's Turn!");
+        });
         // ADD IF RECTANGLE CLKED HERE
-        if (redTurn && gameStarted) {
-            for (RedPiece piece : redPieces) {
+            for (RedPiece piece : theModel.getRedPieces()) {
                 piece.getPiece().setOnMouseClicked(event -> {
-                    grid.getChildren().remove(piece.getPiece());
-                    piece.move(3, 5);
-                    grid.add(piece.getPiece(), piece.getYPos(), piece.getXPos());
+                    if (redTurn && gameStarted) {
+                        grid.getChildren().remove(piece.getPiece());
+                        piece.move(3, 5);
+                        grid.add(piece.getPiece(), 5, 3);
+                        lblTurn.setText("Black Player's Turn!");
+                        redTurn = false;
+                    }
                 });
             }
-        }
-        if (!redTurn && gameStarted) {
-            for (BlackPiece piece : blackPieces) {
+            for (BlackPiece piece : theModel.getBlackPieces()) {
                 piece.getPiece().setOnMouseClicked(event -> {
-                    grid.getChildren().remove(piece.getPiece());
-                    piece.move(3, 5);
-                    grid.add(piece.getPiece(), piece.getYPos(), piece.getXPos());
+                    if (!redTurn && gameStarted) {
+                        piece.getPiece().setFill(Color.YELLOW);
+
+                        grid.getChildren().remove(piece.getPiece());
+                        piece.move(3, 5);
+                        grid.add(piece.getPiece(), 5, 3);
+                        lblTurn.setText("Red Player's Turn!");
+                        redTurn = true;
+                    }
                 });
             }
-        }
+    }
+
+    public ArrayList<Rectangle> getPossibleLocations(Piece piece) {
+
     }
 }

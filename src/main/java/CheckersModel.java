@@ -38,6 +38,8 @@ public class CheckersModel {
         return this.redPieces;
     }
 
+    public ArrayList<BlackPiece> getBlackPieces() { return this.blackPieces; }
+
     public BlackPiece getBlackPiece(int i) { return blackPieces.get(i); }
     public RedPiece getRedPiece(int i) { return redPieces.get(i); }
 }

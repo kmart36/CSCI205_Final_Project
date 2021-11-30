@@ -46,4 +46,5 @@ public class Piece {
     public void move(int x, int y) {
         updateLocation(x, y);
     }
+
 }
