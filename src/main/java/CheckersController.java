@@ -471,6 +471,6 @@ public class CheckersController {
     }
 
     public ArrayList<Rectangle> getPossibleLocations(Piece piece) {
-
+        return null;
     }
 }
