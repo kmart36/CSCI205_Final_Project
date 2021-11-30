@@ -22,9 +22,10 @@ public class CheckersFXMLMain extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/checkersfxml.fxml"));
         Parent root = loader.load();
-        theModel = new CheckersModel();
-
-
+        this.theModel = new CheckersModel();
+        this.theController = loader.getController();
+        this.theController.setModel(theModel);
+        this.theController.initHandlers();
 
         BlackPiece player1 = new BlackPiece();
         RedPiece red1 = new RedPiece();

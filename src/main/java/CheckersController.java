@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import CheckersModel.*;
@@ -28,9 +29,18 @@ import CheckersModel.*;
 
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CheckersController {
+
+    private CheckersModel theModel;
+
+    private ArrayList<Circle> redCircles;
+
+    private ArrayList<Circle> blackCircles;
 
     @FXML
     private ResourceBundle resources;
@@ -311,6 +321,10 @@ public class CheckersController {
     @FXML
     private Circle red9;
 
+    public boolean redTurn = true;
+
+    public boolean gameStarted = false;
+
     @FXML
     void initialize() {
         assert black1 != null : "fx:id=\"black1\" was not injected: check your FXML file 'checkersfxml.fxml'.";
@@ -404,33 +418,62 @@ public class CheckersController {
         assert red7 != null : "fx:id=\"red7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red8 != null : "fx:id=\"red8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        redCircles = new ArrayList<>();
+        blackCircles = new ArrayList<>();
+        List<Circle> tempRed = Arrays.asList(red1, red2, red3, red4, red5, red6, red7, red8, red9, red10, red11, red12);
+        redCircles.addAll(tempRed);
+        List<Circle> tempBlack = Arrays.asList(black1, black2, black3, black4, black5, black6, black7, black8, black9, black10, black11, black12);
+        blackCircles.addAll(tempBlack);
+    }
 
-        // Initialize all of the red pieces as redPiece's
-        RedPiece red1 = new RedPiece(this.red1, this.red1.getCenterX(), this.red1.getCenterY());
-        RedPiece red2 = new RedPiece(this.red2, this.red2.getCenterX(), this.red2.getCenterY());
-        RedPiece red3 = new RedPiece(this.red3, this.red3.getCenterX(), this.red3.getCenterY());
-        RedPiece red4 = new RedPiece(this.red4, this.red4.getCenterX(), this.red4.getCenterY());
-        RedPiece red5 = new RedPiece(this.red5, this.red5.getCenterX(), this.red5.getCenterY());
-        RedPiece red6 = new RedPiece(this.red6, this.red6.getCenterX(), this.red6.getCenterY());
-        RedPiece red7 = new RedPiece(this.red7, this.red7.getCenterX(), this.red7.getCenterY());
-        RedPiece red8 = new RedPiece(this.red8, this.red8.getCenterX(), this.red8.getCenterY());
-        RedPiece red9 = new RedPiece(this.red9, this.red9.getCenterX(), this.red9.getCenterY());
-        RedPiece red10 = new RedPiece(this.red10, this.red10.getCenterX(), this.red10.getCenterY());
-        RedPiece red11 = new RedPiece(this.red11, this.red11.getCenterX(), this.red11.getCenterY());
-        RedPiece red12 = new RedPiece(this.red12, this.red12.getCenterX(), this.red12.getCenterY());
+    public void setModel(CheckersModel theModel) {
+        this.theModel = theModel;
+        int i = 0;
+        for (RedPiece piece : theModel.getRedPieces()) {
+            piece.setPiece(redCircles.get(i));
+            i++;
+        }
+        int j = 0;
+        for (BlackPiece piece : theModel.getBlackPieces()) {
+            piece.setPiece(blackCircles.get(j));
+            j++;
+        }
+    }
 
-        // Initialize all of the black pieces as blackPiece's
-        BlackPiece black1 = new BlackPiece(this.black1, this.black1.getCenterX(), this.black1.getCenterY());
-        BlackPiece black2 = new BlackPiece(this.black2, this.black2.getCenterX(), this.black2.getCenterY());
-        BlackPiece black3 = new BlackPiece(this.black3, this.black3.getCenterX(), this.black3.getCenterY());
-        BlackPiece black4 = new BlackPiece(this.black4, this.black4.getCenterX(), this.black4.getCenterY());
-        BlackPiece black5 = new BlackPiece(this.black5, this.black5.getCenterX(), this.black5.getCenterY());
-        BlackPiece black6 = new BlackPiece(this.black6, this.black6.getCenterX(), this.black6.getCenterY());
-        BlackPiece black7 = new BlackPiece(this.black7, this.black7.getCenterX(), this.black7.getCenterY());
-        BlackPiece black8 = new BlackPiece(this.black8, this.black8.getCenterX(), this.black8.getCenterY());
-        BlackPiece black9 = new BlackPiece(this.black9, this.black9.getCenterX(), this.black9.getCenterY());
-        BlackPiece black10 = new BlackPiece(this.black10, this.black10.getCenterX(), this.black10.getCenterY());
-        BlackPiece black11 = new BlackPiece(this.black11, this.black11.getCenterX(), this.black11.getCenterY());
-        BlackPiece black12 = new BlackPiece(this.black12, this.black12.getCenterX(), this.black12.getCenterY());
+
+    public void initHandlers() {
+        this.btnStart.setOnMouseClicked(event -> {
+            gameStarted = true;
+            lblTurn.setText("Red Player's Turn!");
+        });
+        // ADD IF RECTANGLE CLKED HERE
+            for (RedPiece piece : theModel.getRedPieces()) {
+                piece.getPiece().setOnMouseClicked(event -> {
+                    if (redTurn && gameStarted) {
+                        grid.getChildren().remove(piece.getPiece());
+                        piece.move(3, 5);
+                        grid.add(piece.getPiece(), 5, 3);
+                        lblTurn.setText("Black Player's Turn!");
+                        redTurn = false;
+                    }
+                });
+            }
+            for (BlackPiece piece : theModel.getBlackPieces()) {
+                piece.getPiece().setOnMouseClicked(event -> {
+                    if (!redTurn && gameStarted) {
+                        piece.getPiece().setFill(Color.YELLOW);
+
+                        grid.getChildren().remove(piece.getPiece());
+                        piece.move(3, 5);
+                        grid.add(piece.getPiece(), 5, 3);
+                        lblTurn.setText("Red Player's Turn!");
+                        redTurn = true;
+                    }
+                });
+            }
+    }
+
+    public ArrayList<Rectangle> getPossibleLocations(Piece piece) {
+        return null;
     }
 }

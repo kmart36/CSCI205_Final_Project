@@ -1,4 +1,4 @@
-package CheckersModel;/* *****************************************
+/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2021
  * Instructor: Prof. Brian King
@@ -10,7 +10,7 @@ package CheckersModel;/* *****************************************
  *
  * Project: csci205_final_project
  * Package: CheckersModel
- * Class: CheckersModel.Piece
+ * Class: Piece
  *
  * Description:
  *
@@ -18,9 +18,9 @@ package CheckersModel;/* *****************************************
  */
 
 public class Piece {
-    protected double xLocation;
-    protected double yLocation;
-    protected String color;
+    private int xLocation;
+    private int yLocation;
+    private String color;
 
     public Piece() {
         xLocation = 0;
@@ -28,23 +28,23 @@ public class Piece {
     }
 
     public Piece(double xLoc, double yLoc) {
-        xLocation = xLoc;
-        yLocation = yLoc;
-
+        xLocation = (int)xLoc / 45;
+        yLocation = (int)yLoc / 45;
     }
 
-    private void updateLocation(double x, double y) {
+    private void updateLocation(int x, int y) {
         xLocation = x;
         yLocation = y;
     }
 
-    public double getXPos() {return xLocation;}
+    public int getXPos() {return xLocation;}
 
-    public double getYPos() {return yLocation;}
+    public int getYPos() {return yLocation;}
 
     public String getColor() {return color;}
 
     public void move(int x, int y) {
         updateLocation(x, y);
     }
+
 }
