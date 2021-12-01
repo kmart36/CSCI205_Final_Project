@@ -18,31 +18,54 @@
  */
 package CheckersModel;
 
+import javafx.scene.shape.Rectangle;
+
 public class Space {
 
     private boolean hasPiece;
-    private String color;
     private boolean playable;
+    private Rectangle space;
+    private int xLocation;
+    private int yLocation;
 
-    public Space(boolean hasPiece, String color) {
+    public Space(boolean hasPiece, int x, int y) {
         this.hasPiece = hasPiece;
-        this.color = color;
+        this.space = new Rectangle();
+        this.xLocation = x;
+        this.yLocation = y;
+        if ((xLocation + yLocation & 2) == 0)
+            this.playable = true;
+        else
+            this.playable = false;
+    }
+
+    public Space(int x, int y) {
+        this.xLocation = x;
+        this.yLocation = y;
+        this.space = new Rectangle();
+        if ((xLocation + yLocation & 2) == 0)
+            this.playable = true;
+        else
+            this.playable = false;
     }
 
     public Space() {
         this.hasPiece = false;
-        this.color = "UNASSIGNED";
+        this.space = new Rectangle();
+    }
 
+    public void setHasPiece(boolean hasPiece) {
+        this.hasPiece = hasPiece;
     }
 
     public boolean getHasPiece() { return this.hasPiece; }
 
-    public String getColor() { return this.color; }
+    public void setSpace(Rectangle space) {
+        this.space = space;
+    }
 
-
-    public String toString() {
-        String s = "Space has color " + this.color + "and hasPiece is" + this.hasPiece;
-        return s;
+    public Rectangle getSpace() {
+        return this.space;
     }
 
 }

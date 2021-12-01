@@ -1,4 +1,4 @@
-/* *****************************************
+package CheckersModel;/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2021
  * Instructor: Prof. Brian King
@@ -20,21 +20,16 @@
 import javafx.scene.shape.Circle;
 
 public class RedPiece extends Piece {
-    private int xLocation;
-    private int yLocation;
-    private String color;
     private Circle piece;
 
     public RedPiece() {
         super();
         piece = new Circle();
-        color = "RED";
     }
 
     public RedPiece(Circle piece, double xLoc, double yLoc) {
         super(xLoc, yLoc);
         this.piece = piece;
-        color = "RED";
     }
 
     public Circle getPiece() {

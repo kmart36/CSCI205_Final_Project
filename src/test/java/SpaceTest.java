@@ -1,3 +1,4 @@
+import javafx.scene.shape.Rectangle;
 import org.junit.jupiter.api.Test;
 import CheckersModel.*;
 
@@ -16,19 +17,19 @@ class SpaceTest {
         Space space = new Space();
         assertFalse(space.getHasPiece());
 
-        Space space2 = new Space(true, "RED");
-        assertTrue( space2.getHasPiece());
+        Space space2 = new Space(true, 0, 0);
+        assertTrue(space2.getHasPiece());
     }
 
     /**
      * Test for the getColor method with both a parameterized and unparameterized constructor
      */
-    @Test
-    void getColor() {
-        Space space = new Space();
-        assertEquals("UNASSIGNED", space.getColor());
-
-        Space space2 = new Space(true, "RED");
-        assertEquals("RED", space2.getColor());
-    }
+//    @Test
+//    void getColor() {
+//        Space space = new Space();
+//        assertEquals("UNASSIGNED", space.getColor());
+//
+//        Space space2 = new Space(true, "RED");
+//        assertEquals("RED", space2.getColor());
+//    }
 }

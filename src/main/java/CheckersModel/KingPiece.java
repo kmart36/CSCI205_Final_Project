@@ -21,19 +21,19 @@ public class KingPiece extends Piece {
 
 //    private int xLocation;
 //    private int yLocation;
-//    private String color;
+    private String color;
 
     public KingPiece() {
         super();
         color = super.getColor();
     }
 
-    public KingPiece(BlackPiece piece, double xLoc, double yLoc) {
+    public KingPiece(BlackPiece piece, int xLoc, int yLoc) {
         color = piece.getColor();
         xLocation = xLoc;
         yLocation = yLoc;
     }
-    public KingPiece(RedPiece piece, double xLoc, double yLoc) {
+    public KingPiece(RedPiece piece, int xLoc, int yLoc) {
         color = piece.getColor();
         xLocation = xLoc;
         yLocation = yLoc;

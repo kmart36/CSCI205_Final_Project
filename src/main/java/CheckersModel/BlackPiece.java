@@ -1,4 +1,4 @@
-/* *****************************************
+package CheckersModel;/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2021
  * Instructor: Prof. Brian King
@@ -18,6 +18,7 @@
  */
 
 import javafx.scene.shape.Circle;
+import CheckersModel.*;
 
 public class BlackPiece extends Piece{
     private int xLocation;

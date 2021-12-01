@@ -25,6 +25,7 @@ import CheckersModel.*;
 public class CheckersModel {
     private ArrayList<RedPiece> redPieces;
     private ArrayList<BlackPiece> blackPieces;
+    private ArrayList<Space> spaces;
 
     public CheckersModel() {
         this.redPieces = new ArrayList<>();
@@ -35,6 +36,12 @@ public class CheckersModel {
         for(int i = 0; i < 12; i++){
             this.blackPieces.add(new BlackPiece());
         }
+        this.spaces = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+
+            }
+        }
     }
 
     public ArrayList<RedPiece> getRedPieces() {
@@ -42,6 +49,8 @@ public class CheckersModel {
     }
 
     public ArrayList<BlackPiece> getBlackPieces() { return this.blackPieces; }
+
+    public ArrayList<Space> getSpaces() { return this.spaces; }
 
     public BlackPiece getBlackPiece(int i) { return blackPieces.get(i); }
     public RedPiece getRedPiece(int i) { return redPieces.get(i); }

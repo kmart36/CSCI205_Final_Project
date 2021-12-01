@@ -1,4 +1,4 @@
-/* *****************************************
+package CheckersModel;/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2021
  * Instructor: Prof. Brian King
@@ -18,9 +18,8 @@
  */
 
 public class Piece {
-    private int xLocation;
-    private int yLocation;
-    private String color;
+    protected int xLocation;
+    protected int yLocation;
 
     public Piece() {
         xLocation = 0;
@@ -41,7 +40,7 @@ public class Piece {
 
     public int getYPos() {return yLocation;}
 
-    public String getColor() {return color;}
+    public String getColor() {return "fix";}
 
     public void move(int x, int y) {
         updateLocation(x, y);

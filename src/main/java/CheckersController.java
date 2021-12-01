@@ -42,6 +42,8 @@ public class CheckersController {
 
     private ArrayList<Circle> blackCircles;
 
+    private ArrayList<Rectangle> squares;
+
     @FXML
     private ResourceBundle resources;
 
@@ -321,9 +323,9 @@ public class CheckersController {
     @FXML
     private Circle red9;
 
-    public boolean redTurn = true;
+    public boolean redTurn;
 
-    public boolean gameStarted = false;
+    public boolean gameStarted;
 
     @FXML
     void initialize() {
@@ -420,10 +422,15 @@ public class CheckersController {
         assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         redCircles = new ArrayList<>();
         blackCircles = new ArrayList<>();
+        squares = new ArrayList<>();
         List<Circle> tempRed = Arrays.asList(red1, red2, red3, red4, red5, red6, red7, red8, red9, red10, red11, red12);
         redCircles.addAll(tempRed);
         List<Circle> tempBlack = Arrays.asList(black1, black2, black3, black4, black5, black6, black7, black8, black9, black10, black11, black12);
         blackCircles.addAll(tempBlack);
+        List<Rectangle> tempSquares = Arrays.asList(rect1, rect2, rect3, rect4, rect5, rect6, rect7, rect8, rect9, rect10, rect11, rect12, rect13, rect14, rect15, rect16, rect17, rect18, rect19, rect20, rect21, rect22, rect23, rect24, rect25, rect26, rect27, rect28, rect29, rect30, rect31, rect32, rect33, rect34, rect35, rect36, rect37, rect38, rect39, rect40, rect41, rect42, rect43, rect44, rect45, rect46, rect47, rect48, rect49, rect50, rect51, rect52, rect53, rect54, rect55, rect56, rect57, rect58, rect59, rect60, rect61, rect62, rect63, rect64);
+        squares.addAll(tempSquares);
+        redTurn = true;
+        gameStarted = false;
     }
 
     public void setModel(CheckersModel theModel) {
@@ -438,6 +445,7 @@ public class CheckersController {
             piece.setPiece(blackCircles.get(j));
             j++;
         }
+        int m = 0;
     }
 
 
@@ -462,7 +470,6 @@ public class CheckersController {
                 piece.getPiece().setOnMouseClicked(event -> {
                     if (!redTurn && gameStarted) {
                         piece.getPiece().setFill(Color.YELLOW);
-
                         grid.getChildren().remove(piece.getPiece());
                         piece.move(3, 5);
                         grid.add(piece.getPiece(), 5, 3);
