@@ -1,3 +1,21 @@
+/* ****************************************
+ * CSCI205- Software Engineering and Design
+ * Fall 2021
+ * Instructor: Prof. Brian King
+ *
+ * Name: Team01
+ * Section: CSCI205-02
+ * Date: 11/23/21
+ * Time: 6:52 PM
+ *
+ * Project: csci205_final_project
+ * Package: PACKAGE_NAME
+ * Class: CheckersModel
+ * DESCRIPTION:
+ * The FXML file to create the checkers game
+ * ****************************************
+ */
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,13 +27,21 @@ import java.io.IOException;
 
 public class CheckersFXMLMain extends Application {
 
+    /** Creates the model */
     private CheckersModel theModel;
+
+    /** Creates the controller */
     private CheckersController theController;
 
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Starts up the FXML file
+     * @param primaryStage
+     * @throws IOException
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Load in the FXML file and obtain the root node of the scene graph.(Code from lab11)
