@@ -3,7 +3,7 @@
  * Fall 2021
  * Instructor: Prof. Brian King
  *
- * Name: team01
+ * Name: Katy Martinson
  * Section: 9:30am
  * Date: 11/12/2021
  * Time: 10:11 AM
@@ -13,7 +13,7 @@
  * Class: CheckersController
  *
  * Description:
- * Controller class to run the game
+ *
  * ****************************************
  */
 
@@ -35,16 +35,11 @@ public class CheckersController {
     @FXML
     private ResourceBundle resources;
 
-    /** holds the location of _________ */
     @FXML
     private URL location;
 
     @FXML
     private Circle black1;
-
-    /**
-     * Creates the circles that act as the black pieces on the board
-     */
 
     @FXML
     private Circle black10;
@@ -79,22 +74,15 @@ public class CheckersController {
     @FXML
     private Circle black9;
 
-    /** Creates a button that starts the game */
     @FXML
     private Button btnStart;
 
-    /** Creates a grid to obtain coordinates, create the board, and move pieces */
     @FXML
     private GridPane grid;
 
-    /** Label that determines whose turn it is */
     @FXML
     private Label lblTurn;
 
-
-    /**
-     * Creates rectangles to make the checkerboard
-     */
     @FXML
     private Rectangle rect1;
 
@@ -287,9 +275,6 @@ public class CheckersController {
     @FXML
     private Rectangle rect9;
 
-    /**
-     * Creates circles to act as the red pieces on the board
-     */
     @FXML
     private Circle red1;
 
@@ -326,7 +311,6 @@ public class CheckersController {
     @FXML
     private Circle red9;
 
-    /** Initializing the elements to the FXML file */
     @FXML
     void initialize() {
         assert black1 != null : "fx:id=\"black1\" was not injected: check your FXML file 'checkersfxml.fxml'.";
