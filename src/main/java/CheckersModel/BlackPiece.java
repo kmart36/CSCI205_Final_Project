@@ -21,25 +21,30 @@ import javafx.scene.shape.Circle;
 import CheckersModel.*;
 
 public class BlackPiece extends Piece {
-//    private double xLocation;
-//    private double yLocation;
-//    private String color;
     private Circle piece;
 
     public BlackPiece() {
         super();
-        color = "BLACK";
+        piece = new Circle();
     }
 
-    public BlackPiece(Circle piece, double xLoc, double yLoc) {
+    public BlackPiece(Circle piece, int xLoc, int yLoc) {
         super(xLoc, yLoc);
         this.piece = piece;
-        color = "BLACK";
     }
+
+    public Circle getPiece() {
+        return this.piece;
+    }
+
+    public void setPiece(Circle newPiece) {
+        this.piece = newPiece;
+    }
+
 
     @Override
     public void move(int x, int y) {
-        if (y > yLocation) { // this line can be changed to reflect which side of the board Black is on
+        if (y > yLocation) { // this line can be changed to reflect which side of the board Red is on
             super.move(x, y);
         }
     }

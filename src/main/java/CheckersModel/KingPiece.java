@@ -1,4 +1,5 @@
-package CheckersModel;/* *****************************************
+package CheckersModel;
+/* *****************************************
  * CSCI205 - Software Engineering and Design
  * Fall 2021
  * Instructor: Prof. Brian King
@@ -19,22 +20,19 @@ package CheckersModel;/* *****************************************
 
 public class KingPiece extends Piece {
 
-//    private int xLocation;
-//    private int yLocation;
-    private String color;
+    private Piece piece;
 
     public KingPiece() {
         super();
-        color = super.getColor();
     }
 
     public KingPiece(BlackPiece piece, int xLoc, int yLoc) {
-        color = piece.getColor();
+        this.piece = piece;
         xLocation = xLoc;
         yLocation = yLoc;
     }
     public KingPiece(RedPiece piece, int xLoc, int yLoc) {
-        color = piece.getColor();
+        this.piece = piece;
         xLocation = xLoc;
         yLocation = yLoc;
     }

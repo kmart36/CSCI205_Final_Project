@@ -26,9 +26,9 @@ public class Piece {
         yLocation = 0;
     }
 
-    public Piece(double xLoc, double yLoc) {
-        xLocation = (int)xLoc / 45;
-        yLocation = (int)yLoc / 45;
+    public Piece(int xLoc, int yLoc) {
+        xLocation = xLoc;
+        yLocation = yLoc;
     }
 
     private void updateLocation(int x, int y) {
@@ -39,8 +39,6 @@ public class Piece {
     public int getXPos() {return xLocation;}
 
     public int getYPos() {return yLocation;}
-
-    public String getColor() {return "fix";}
 
     public void move(int x, int y) {
         updateLocation(x, y);
