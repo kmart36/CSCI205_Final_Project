@@ -5,17 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class KingPieceTest {
 
-    @Test
-    void getColor() {
-        RedPiece red = new RedPiece();
-        BlackPiece black = new BlackPiece();
-
-        KingPiece redKing = new KingPiece(red, red.getXPos(), red.getYPos());
-        KingPiece blackKing = new KingPiece(black, black.getXPos(), black.getYPos());
-
-        assertEquals("RED", redKing.getColor());
-        assertEquals("BLACK", blackKing.getColor());
-    }
+//    @Test
+//    void getColor() {
+//        RedPiece red = new RedPiece();
+//        BlackPiece black = new BlackPiece();
+//
+//        KingPiece redKing = new KingPiece(red, red.getXPos(), red.getYPos());
+//        KingPiece blackKing = new KingPiece(black, black.getXPos(), black.getYPos());
+//
+//        assertEquals("RED", redKing.getColor());
+//        assertEquals("BLACK", blackKing.getColor());
+//    }
 
     @Test
     void move() {

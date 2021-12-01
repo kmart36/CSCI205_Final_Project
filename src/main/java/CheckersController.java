@@ -446,6 +446,24 @@ public class CheckersController {
             j++;
         }
         int m = 0;
+        for (Space space : theModel.getSpaces()) {
+            space.setSpace(squares.get(m));
+            m++;
+        }
+        int l = 0;
+        for (RedPiece piece : theModel.getRedPieces()) {
+            if (theModel.getSpaces().get(l).isPlayable()) {
+                theModel.getSpaces().get(l).setHasPiece(true);
+            }
+            l++;
+        }
+        int h = 64;
+        for (BlackPiece piece : theModel.getBlackPieces()) {
+            if (theModel.getSpaces().get(h).isPlayable()) {
+                theModel.getSpaces().get(h).setHasPiece(true);
+            }
+            h--;
+        }
     }
 
 

@@ -68,4 +68,6 @@ public class Space {
         return this.space;
     }
 
+    public boolean isPlayable() { return this.playable; }
+
 }

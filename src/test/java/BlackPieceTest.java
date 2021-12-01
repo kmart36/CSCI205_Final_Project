@@ -24,9 +24,4 @@ class BlackPieceTest {
         assertEquals(2, piece.getYPos());
     }
 
-    @Test
-    void getColor(){
-        Piece piece = new BlackPiece();
-        assertEquals("BLACK", piece.getColor());
-    }
 }

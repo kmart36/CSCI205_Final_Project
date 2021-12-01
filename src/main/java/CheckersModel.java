@@ -39,7 +39,7 @@ public class CheckersModel {
         this.spaces = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-
+                spaces.add(new Space(i, j));
             }
         }
     }
@@ -53,6 +53,7 @@ public class CheckersModel {
     public ArrayList<Space> getSpaces() { return this.spaces; }
 
     public BlackPiece getBlackPiece(int i) { return blackPieces.get(i); }
+
     public RedPiece getRedPiece(int i) { return redPieces.get(i); }
 }
 
