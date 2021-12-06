@@ -60,14 +60,14 @@ public class CheckersModel {
         if (x > 7 || y > 7 || x < 0 || y < 0) {
             return false;
         }
-//        if (checkTakeRed()) {
-//            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
-//                return true;
-//            }
-//            else {
-//                return false;
-//            }
-//        }
+        if (checkTakeRed()) {
+            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         int index = y * 8 + x;
         if (((y == piece.getYPos() + 1) && (x == piece.getXPos() - 1)) || ((y == piece.getYPos() + 1) && (x == piece.getXPos() + 1))) {
             if (spaces.get(index).getHasPiece()) {
@@ -86,14 +86,14 @@ public class CheckersModel {
         if (x > 7 || y > 7 || x < 0 || y < 0) {
             return false;
         }
-//        if (checkTakeBlack()) {
-//            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
-//                return true;
-//            }
-//            else {
-//                return false;
-//            }
-//        }
+        if (checkTakeBlack()) {
+            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         int index = y * 8 + x;
         if (((y == piece.getYPos() - 1) && (x == piece.getXPos() - 1)) || ((y == piece.getYPos() - 1) && (x == piece.getXPos() + 1))) {
             if (spaces.get(index).getHasPiece()) {
@@ -223,67 +223,67 @@ public class CheckersModel {
         }
     }
 
-    public ArrayList<Space> getPossibleLocations(RedPiece piece) {
-        ArrayList<Space> locations = new ArrayList<>();
-        int index = (piece.getYPos() * 8) + piece.getXPos();
-        if (index % 8 == 0) {
-            if (!spaces.get(index + 9).getHasPiece()) {
-                locations.add(spaces.get(index + 9));
-            }
-            return locations;
-        }
-        else if (index % 8 == 7) {
-            if (!spaces.get(index + 7).getHasPiece()) {
-                locations.add(spaces.get(index + 7));
-            }
-            return locations;
-        }
-        else if (index % 8 != 7 && (index % 8) != 0) {
-            if (!spaces.get(index + 9).getHasPiece()) {
-                locations.add(spaces.get(index + 9));
-            }
-            if (!spaces.get(index + 7).getHasPiece()) {
-                locations.add(spaces.get(index + 7));
-            }
-            return locations;
-        }
-        else {
-            return locations;
-        }
-    }
-
-    public ArrayList<Space> getPossibleLocations(BlackPiece piece) {
-        ArrayList<Space> locations = new ArrayList<>();
-        int index = (piece.getYPos() * 8) + piece.getXPos();
-        if (index % 8 == 0) {
-            if (!spaces.get(index - 7).getHasPiece()) {
-                locations.add(spaces.get(index - 7));
-            }
-            return locations;
-        }
-        else if (index % 8 == 7) {
-            if (!spaces.get(index - 9).getHasPiece()) {
-                locations.add(spaces.get(index - 9));
-            }
-            return locations;
-        }
-        else if (index % 8 != 7 && (index % 8) != 0) {
-            if (!spaces.get(index - 7).getHasPiece()) {
-                locations.add(spaces.get(index - 7));
-            }
-            if (!spaces.get(index - 9).getHasPiece()) {
-                locations.add(spaces.get(index - 9));
-            }
-            return locations;
-        }
-        else {
-            return locations;
-        }
-    }
-
-    public ArrayList<Space> getPossibleLocations(KingPiece piece) {
-        ArrayList<Space> locations = new ArrayList<>();
-        return locations;
-    }
+//    public ArrayList<Space> getPossibleLocations(RedPiece piece) {
+//        ArrayList<Space> locations = new ArrayList<>();
+//        int index = (piece.getYPos() * 8) + piece.getXPos();
+//        if (index % 8 == 0) {
+//            if (!spaces.get(index + 9).getHasPiece()) {
+//                locations.add(spaces.get(index + 9));
+//            }
+//            return locations;
+//        }
+//        else if (index % 8 == 7) {
+//            if (!spaces.get(index + 7).getHasPiece()) {
+//                locations.add(spaces.get(index + 7));
+//            }
+//            return locations;
+//        }
+//        else if (index % 8 != 7 && (index % 8) != 0) {
+//            if (!spaces.get(index + 9).getHasPiece()) {
+//                locations.add(spaces.get(index + 9));
+//            }
+//            if (!spaces.get(index + 7).getHasPiece()) {
+//                locations.add(spaces.get(index + 7));
+//            }
+//            return locations;
+//        }
+//        else {
+//            return locations;
+//        }
+//    }
+//
+//    public ArrayList<Space> getPossibleLocations(BlackPiece piece) {
+//        ArrayList<Space> locations = new ArrayList<>();
+//        int index = (piece.getYPos() * 8) + piece.getXPos();
+//        if (index % 8 == 0) {
+//            if (!spaces.get(index - 7).getHasPiece()) {
+//                locations.add(spaces.get(index - 7));
+//            }
+//            return locations;
+//        }
+//        else if (index % 8 == 7) {
+//            if (!spaces.get(index - 9).getHasPiece()) {
+//                locations.add(spaces.get(index - 9));
+//            }
+//            return locations;
+//        }
+//        else if (index % 8 != 7 && (index % 8) != 0) {
+//            if (!spaces.get(index - 7).getHasPiece()) {
+//                locations.add(spaces.get(index - 7));
+//            }
+//            if (!spaces.get(index - 9).getHasPiece()) {
+//                locations.add(spaces.get(index - 9));
+//            }
+//            return locations;
+//        }
+//        else {
+//            return locations;
+//        }
+//    }
+//
+//    public ArrayList<Space> getPossibleLocations(KingPiece piece) {
+//        ArrayList<Space> locations = new ArrayList<>();
+//        return locations;
+//    }
 }
 
