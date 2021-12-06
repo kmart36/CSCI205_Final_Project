@@ -517,24 +517,33 @@ public class CheckersController {
                             grid.getChildren().remove(piece.getPiece());
                             theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
                             theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                            theModel.getSpaces().get(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getYPos() * 8 + theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getXPos()).setHasPiece(false);
                             grid.getChildren().remove(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getPiece());
                             theModel.getBlackPieces().remove(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)));
                             piece.updateLocation(x, y);
                             grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
                             lblTurn.setText("Red Player's Turn!");
+                            if (!theModel.checkTakeRed()) {
+                                lblTurn.setText("Black Player's Turn!");
+                                redTurn = false;
+                            }
                         }
-
                         else if (theModel.checkTakeRed()) {
                             lblTurn.setText("One of your pieces can take another piece!");
                         }
                         else {
-                            grid.getChildren().remove(piece.getPiece());
-                            theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
-                            theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
-                            piece.updateLocation(x, y);
-                            grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
-                            lblTurn.setText("Black Player's Turn!");
-                            redTurn = false;
+                            if (theModel.checkLocation(x, y, piece) == false) {
+                                lblTurn.setText("That piece cannot move there!");
+                            }
+                            else {
+                                grid.getChildren().remove(piece.getPiece());
+                                theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+                                theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                                piece.updateLocation(x, y);
+                                grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+                                lblTurn.setText("Black Player's Turn!");
+                                redTurn = false;
+                            }
                         }
                     }
 //                    // Checks to see if its red player's turn, if the game has started, and if a piece has already been clicked
@@ -579,6 +588,11 @@ public class CheckersController {
 //                        });
 //                    }
             }
+        for (Space space : theModel.getSpaces()) {
+            space.getSpace().setOnMouseClicked(event -> {
+                lblTurn.setText("" + space.getHasPiece());
+            });
+        }
         for (BlackPiece piece : theModel.getBlackPieces()) {
             piece.getPiece().setOnMouseClicked(mouseEvent -> {
                 if (!redTurn) {
@@ -588,11 +602,16 @@ public class CheckersController {
                         grid.getChildren().remove(piece.getPiece());
                         theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
                         theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                        theModel.getSpaces().get(theModel.getPieceRed(theModel.pieceTakenRed(x, y, piece)).getYPos() * 8 + theModel.getPieceRed(theModel.pieceTakenRed(x, y, piece)).getXPos()).setHasPiece(false);
                         grid.getChildren().remove(theModel.getPieceRed(theModel.pieceTakenRed(x, y, piece)).getPiece());
                         theModel.getRedPieces().remove(theModel.getPieceRed(theModel.pieceTakenRed(x, y, piece)));
                         piece.updateLocation(x, y);
                         grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
                         lblTurn.setText("Black Player's Turn!");
+                        if (!theModel.checkTakeBlack()) {
+                            lblTurn.setText("Red Player's Turn!");
+                            redTurn = true;
+                        }
                     }
                     else if (theModel.checkTakeBlack()) {
                         lblTurn.setText("One of your pieces can take another piece!");
@@ -600,7 +619,8 @@ public class CheckersController {
                     else {
                         if (theModel.checkLocation(x, y, piece) == false) {
                             lblTurn.setText("That piece cannot move there!");
-                        } else {
+                        }
+                        else {
                             grid.getChildren().remove(piece.getPiece());
                             theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
                             theModel.getSpaces().get(y * 8 + x).setHasPiece(true);

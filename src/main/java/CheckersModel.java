@@ -60,14 +60,14 @@ public class CheckersModel {
         if (x > 7 || y > 7 || x < 0 || y < 0) {
             return false;
         }
-        if (checkTakeRed()) {
-            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+//        if (checkTakeRed()) {
+//            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
+//                return true;
+//            }
+//            else {
+//                return false;
+//            }
+//        }
         int index = y * 8 + x;
         if (((y == piece.getYPos() + 1) && (x == piece.getXPos() - 1)) || ((y == piece.getYPos() + 1) && (x == piece.getXPos() + 1))) {
             if (spaces.get(index).getHasPiece()) {
@@ -86,14 +86,14 @@ public class CheckersModel {
         if (x > 7 || y > 7 || x < 0 || y < 0) {
             return false;
         }
-        if (checkTakeBlack()) {
-            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+//        if (checkTakeBlack()) {
+//            if (((y == piece.getYPos() + 2) && (x == piece.getXPos() - 2)) || ((y == piece.getYPos() + 2) && (x == piece.getXPos() + 2))) {
+//                return true;
+//            }
+//            else {
+//                return false;
+//            }
+//        }
         int index = y * 8 + x;
         if (((y == piece.getYPos() - 1) && (x == piece.getXPos() - 1)) || ((y == piece.getYPos() - 1) && (x == piece.getXPos() + 1))) {
             if (spaces.get(index).getHasPiece()) {
