@@ -53,8 +53,6 @@ public class CheckersFXMLMain extends Application {
         this.theController.setModel(theModel);
         this.theController.initHandlers();
 
-        BlackPiece player1 = new BlackPiece();
-        RedPiece red1 = new RedPiece();
 
         // Set up our stage(Code from lab11)
         primaryStage.setTitle("Play Checkers!");

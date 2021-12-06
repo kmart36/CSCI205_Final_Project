@@ -28,6 +28,11 @@ public class BlackPiece extends Piece {
         piece = new Circle();
     }
 
+    public BlackPiece(int xLoc, int yLoc) {
+        super(xLoc, yLoc);
+        piece = new Circle();
+    }
+
     public BlackPiece(Circle piece, int xLoc, int yLoc) {
         super(xLoc, yLoc);
         this.piece = piece;

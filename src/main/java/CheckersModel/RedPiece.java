@@ -27,6 +27,11 @@ public class RedPiece extends Piece {
         piece = new Circle();
     }
 
+    public RedPiece(int xLoc, int yLoc) {
+        super(xLoc, yLoc);
+        piece = new Circle();
+    }
+
     public RedPiece(Circle piece, int xLoc, int yLoc) {
         super(xLoc, yLoc);
         this.piece = piece;

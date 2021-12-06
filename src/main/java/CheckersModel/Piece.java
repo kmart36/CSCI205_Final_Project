@@ -31,7 +31,7 @@ public class Piece {
         yLocation = yLoc;
     }
 
-    private void updateLocation(int x, int y) {
+    public void updateLocation(int x, int y) {
         xLocation = x;
         yLocation = y;
     }

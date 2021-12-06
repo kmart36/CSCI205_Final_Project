@@ -33,7 +33,7 @@ public class Space {
         this.space = new Rectangle();
         this.xLocation = x;
         this.yLocation = y;
-        if ((xLocation + yLocation & 2) == 0)
+        if ((xLocation + yLocation) % 2 == 0)
             this.playable = true;
         else
             this.playable = false;
@@ -43,7 +43,7 @@ public class Space {
         this.xLocation = x;
         this.yLocation = y;
         this.space = new Rectangle();
-        if ((xLocation + yLocation & 2) == 0)
+        if ((xLocation + yLocation) % 2 == 0)
             this.playable = true;
         else
             this.playable = false;
@@ -69,5 +69,9 @@ public class Space {
     }
 
     public boolean isPlayable() { return this.playable; }
+
+    public int getxLocation() { return this.xLocation; }
+
+    public int getyLocation() { return this.yLocation; }
 
 }

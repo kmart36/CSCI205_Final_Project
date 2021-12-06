@@ -20,8 +20,10 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import CheckersModel.*;
@@ -323,9 +325,14 @@ public class CheckersController {
     @FXML
     private Circle red9;
 
+    @FXML
+    private TextField txtMove;
+
     public boolean redTurn;
 
     public boolean gameStarted;
+
+    public boolean pieceClicked;
 
     @FXML
     void initialize() {
@@ -420,6 +427,7 @@ public class CheckersController {
         assert red7 != null : "fx:id=\"red7\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red8 != null : "fx:id=\"red8\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         assert red9 != null : "fx:id=\"red9\" was not injected: check your FXML file 'checkersfxml.fxml'.";
+        assert txtMove != null : "fx:id=\"txtMove\" was not injected: check your FXML file 'checkersfxml.fxml'.";
         redCircles = new ArrayList<>();
         blackCircles = new ArrayList<>();
         squares = new ArrayList<>();
@@ -431,74 +439,210 @@ public class CheckersController {
         squares.addAll(tempSquares);
         redTurn = true;
         gameStarted = false;
+        pieceClicked = false;
     }
 
     public void setModel(CheckersModel theModel) {
         this.theModel = theModel;
+        // Assigns each red piece with its corresponding red circle
         int i = 0;
         for (RedPiece piece : theModel.getRedPieces()) {
             piece.setPiece(redCircles.get(i));
             i++;
         }
+        // Assigns each black piece with its corresponding black circle
         int j = 0;
         for (BlackPiece piece : theModel.getBlackPieces()) {
             piece.setPiece(blackCircles.get(j));
             j++;
         }
+        // Assigns each space with its corresponding square
         int m = 0;
         for (Space space : theModel.getSpaces()) {
             space.setSpace(squares.get(m));
             m++;
         }
+        // Assigns the first 12 playable spaces for the red side as "having a piece" for the red pieces
         int l = 0;
-        for (RedPiece piece : theModel.getRedPieces()) {
-            if (theModel.getSpaces().get(l).isPlayable()) {
-                theModel.getSpaces().get(l).setHasPiece(true);
+        for (int g = 0; g < 12; g++) {
+            while (theModel.getSpaces().get(l).isPlayable() == false) {
+                l++;
             }
+            theModel.getSpaces().get(l).setHasPiece(true);
             l++;
         }
-        int h = 64;
-        for (BlackPiece piece : theModel.getBlackPieces()) {
-            if (theModel.getSpaces().get(h).isPlayable()) {
-                theModel.getSpaces().get(h).setHasPiece(true);
+        // Assigns the last 12 playable spaces for the red side as "having a piece for the black pieces
+        int e = 63;
+        for (int g = 0; g < 12 ; g++) {
+            while (theModel.getSpaces().get(e).isPlayable() == false) {
+                e--;
             }
-            h--;
+            theModel.getSpaces().get(e).setHasPiece(true);
+            e--;
+        }
+        // Assigns each red piece with its x,y location on the board (top left is 0,0)
+        int f = 0;
+        for (int g = 0; g < 12; g++) {
+            while (theModel.getSpaces().get(f).isPlayable() == false) {
+                f++;
+            }
+            theModel.getRedPieces().get(g).updateLocation(theModel.getSpaces().get(f).getxLocation(), theModel.getSpaces().get(f).getyLocation());
+            f++;
+        }
+        // Assigns each black pieces with its x,y location on the board (bottom right is 7,7)
+        int y = 63;
+        for (int g = 0; g < 12; g++) {
+            while (theModel.getSpaces().get(y).isPlayable() == false) {
+                y--;
+            }
+            theModel.getBlackPieces().get(g).updateLocation(theModel.getSpaces().get(y).getxLocation(), theModel.getSpaces().get(y).getyLocation());
+            y--;
         }
     }
 
 
     public void initHandlers() {
+        // Starts the game, circles and squares cannot be clicked without hitting this button first
         this.btnStart.setOnMouseClicked(event -> {
             gameStarted = true;
             lblTurn.setText("Red Player's Turn!");
         });
-        // ADD IF RECTANGLE CLKED HERE
-            for (RedPiece piece : theModel.getRedPieces()) {
-                piece.getPiece().setOnMouseClicked(event -> {
-                    if (redTurn && gameStarted) {
-                        grid.getChildren().remove(piece.getPiece());
-                        piece.move(3, 5);
-                        grid.add(piece.getPiece(), 5, 3);
-                        lblTurn.setText("Black Player's Turn!");
-                        redTurn = false;
-                    }
-                });
-            }
-            for (BlackPiece piece : theModel.getBlackPieces()) {
-                piece.getPiece().setOnMouseClicked(event -> {
-                    if (!redTurn && gameStarted) {
-                        piece.getPiece().setFill(Color.YELLOW);
-                        grid.getChildren().remove(piece.getPiece());
-                        piece.move(3, 5);
-                        grid.add(piece.getPiece(), 5, 3);
-                        lblTurn.setText("Red Player's Turn!");
-                        redTurn = true;
-                    }
-                });
-            }
-    }
+        // Goes through the list of red pieces and, when one is clicked, starts the event handler
+        for (RedPiece piece : theModel.getRedPieces()) {
+                piece.getPiece().setOnMouseClicked(mouseEvent -> {
+                    if (redTurn) {
+                        int x = Integer.valueOf(txtMove.getText(0, 1));
+                        int y = Integer.valueOf(txtMove.getText(2, 3));
+                        if (theModel.takePiece(x, y, piece)) {
+                            grid.getChildren().remove(piece.getPiece());
+                            theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+                            theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                            grid.getChildren().remove(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getPiece());
+                            theModel.getBlackPieces().remove(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)));
+                            piece.updateLocation(x, y);
+                            grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+                            lblTurn.setText("Red Player's Turn!");
+                        }
 
-    public ArrayList<Rectangle> getPossibleLocations(Piece piece) {
-        return null;
+                        else if (theModel.checkTakeRed()) {
+                            lblTurn.setText("One of your pieces can take another piece!");
+                        }
+                        else {
+                            grid.getChildren().remove(piece.getPiece());
+                            theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+                            theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                            piece.updateLocation(x, y);
+                            grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+                            lblTurn.setText("Black Player's Turn!");
+                            redTurn = false;
+                        }
+                    }
+//                    // Checks to see if its red player's turn, if the game has started, and if a piece has already been clicked
+//                    if (redTurn && gameStarted && !pieceClicked) {
+//                        // Checks to see if the piece cannot move
+//                        if (theModel.getPossibleLocations(piece).isEmpty()) {
+//                            lblTurn.setText("Cannot move that piece!");
+//                        }
+//                        // Sets the piece yellow and the locations it can go yellow.
+//                        else {
+//                            piece.getPiece().setFill(Color.YELLOW);
+//                            for (Space location : theModel.getPossibleLocations(piece)) {
+//                                location.getSpace().setFill(Color.YELLOW);
+//                                pieceClicked = true;
+//                            }
+//                        }
+//                    }
+                });
+                // Goes through the available movements for the piece and, when one is clicked, completes the logic
+//                    for (Space location : theModel.getPossibleLocations(piece)) {
+//                        location.getSpace().setOnMouseClicked(mouseEvent -> {
+//                            if (pieceClicked == true) {
+//                                // Removes the piece from the grid
+//                                // Changes the color of the locations back to their original color
+//                                for (Space location2 : theModel.getPossibleLocations(piece)) {
+//                                    location2.getSpace().setFill(Paint.valueOf("#ff1100"));
+//                                }
+//                                lblTurn.setText("blah");
+//                                // Sets the original location of the piece to no longer having a piece anymore
+//                                theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+//                                // Updates the location of the piece to the x,y location of the square that was clicked
+//                                piece.updateLocation(location.getxLocation(), location.getyLocation());
+//                                // Adds the piece back to the grid at its new location
+//                                grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+//                                //lblTurn.setText("Black Player's Turn!");
+//                                piece.getPiece().setFill(Paint.valueOf("#8d0000"));
+//                                // Sets the new location so it has a piece on it
+//                                location.setHasPiece(true);
+//                                redTurn = false;
+//                                pieceClicked = false;
+//                           }
+//                        });
+//                    }
+            }
+        for (BlackPiece piece : theModel.getBlackPieces()) {
+            piece.getPiece().setOnMouseClicked(mouseEvent -> {
+                if (!redTurn) {
+                    int x = Integer.valueOf(txtMove.getText(0, 1));
+                    int y = Integer.valueOf(txtMove.getText(2, 3));
+                    if (theModel.takePiece(x, y, piece)) {
+                        grid.getChildren().remove(piece.getPiece());
+                        theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+                        theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                        grid.getChildren().remove(theModel.getPieceRed(theModel.pieceTakenRed(x, y, piece)).getPiece());
+                        theModel.getRedPieces().remove(theModel.getPieceRed(theModel.pieceTakenRed(x, y, piece)));
+                        piece.updateLocation(x, y);
+                        grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+                        lblTurn.setText("Black Player's Turn!");
+                    }
+                    else if (theModel.checkTakeBlack()) {
+                        lblTurn.setText("One of your pieces can take another piece!");
+                    }
+                    else {
+                        if (theModel.checkLocation(x, y, piece) == false) {
+                            lblTurn.setText("That piece cannot move there!");
+                        } else {
+                            grid.getChildren().remove(piece.getPiece());
+                            theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+                            theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                            piece.updateLocation(x, y);
+                            grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+                            lblTurn.setText("Red Player's Turn!");
+                            redTurn = true;
+                        }
+                    }
+                }
+//                if (!redTurn && gameStarted && !pieceClicked) {
+//                    if (theModel.getPossibleLocations(piece).isEmpty()) {
+//                        lblTurn.setText("Cannot move that piece!");
+//                    }
+//                    else {
+//                        piece.getPiece().setFill(Color.YELLOW);
+//                        for (Space location : theModel.getPossibleLocations(piece)) {
+//                            location.getSpace().setFill(Color.YELLOW);
+//                            pieceClicked = true;
+//                        }
+//                    }
+//                }
+            });
+//            for (Space location : theModel.getPossibleLocations(piece)) {
+//                location.getSpace().setOnMouseClicked(mouseEvent -> {
+//                    if (pieceClicked == true) {
+//                        grid.getChildren().remove(piece.getPiece());
+//                        for (Space location2 : theModel.getPossibleLocations(piece)) {
+//                            location2.getSpace().setFill(Paint.valueOf("#ff1100"));
+//                        }
+//                        theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+//                        piece.updateLocation(location.getxLocation(), location.getyLocation());
+//                        lblTurn.setText(location.getxLocation() + " " + location.getyLocation() + " " + piece.getXPos() + " " + piece.getYPos() + " " + theModel.getSpaces().get(16).getHasPiece());
+//                        grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
+//                        lblTurn.setText("Red Player's Turn!");
+//                        piece.getPiece().setFill(Paint.valueOf("#161616"));
+//                        location.setHasPiece(true);
+//                        redTurn = true;
+//                        pieceClicked = false;
+//                    }
+//                });
+//            }
+        }
     }
 }
