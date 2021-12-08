@@ -38,6 +38,7 @@ import java.util.ResourceBundle;
 
 public class CheckersController {
 
+    // Instance of the Checkers Model that will be updated with each move
     private CheckersModel theModel;
 
     private ArrayList<Circle> redCircles;
@@ -328,11 +329,11 @@ public class CheckersController {
     @FXML
     private TextField txtMove;
 
-    public boolean redTurn;
+    private boolean redTurn;
 
-    public boolean gameStarted;
+    private boolean gameStarted;
 
-    public boolean pieceClicked;
+    //private boolean pieceClicked;
 
     @FXML
     void initialize() {
@@ -439,9 +440,15 @@ public class CheckersController {
         squares.addAll(tempSquares);
         redTurn = true;
         gameStarted = false;
-        pieceClicked = false;
+        //pieceClicked = false;
     }
 
+    /**
+     * Sets theModel so that our needed Lists are associated with the JavaFX shapes
+     * Sets the initial spaces that the pieces are on to "having a piece"
+     * Assigns each piece with its x,y location on the board
+     * @param theModel the instance of the Checkers Model that we will use for the game. Updates with each move
+     */
     public void setModel(CheckersModel theModel) {
         this.theModel = theModel;
         // Assigns each red piece with its corresponding red circle
@@ -471,7 +478,7 @@ public class CheckersController {
             theModel.getSpaces().get(l).setHasPiece(true);
             l++;
         }
-        // Assigns the last 12 playable spaces for the red side as "having a piece for the black pieces
+        // Assigns the last 12 playable spaces for the red side as "having a piece" for the black pieces
         int e = 63;
         for (int g = 0; g < 12 ; g++) {
             while (theModel.getSpaces().get(e).isPlayable() == false) {
@@ -501,6 +508,9 @@ public class CheckersController {
     }
 
 
+    /**
+     * Initializes the handlers for when pieces are clicked and completes the logic necessary to move the piece.
+     */
     public void initHandlers() {
         // Starts the game, circles and squares cannot be clicked without hitting this button first
         this.btnStart.setOnMouseClicked(event -> {
@@ -510,27 +520,45 @@ public class CheckersController {
         // Goes through the list of red pieces and, when one is clicked, starts the event handler
         for (RedPiece piece : theModel.getRedPieces()) {
                 piece.getPiece().setOnMouseClicked(mouseEvent -> {
-                    if (redTurn) {
+                    if (redTurn && gameStarted) {
                         int x = Integer.valueOf(txtMove.getText(0, 1));
                         int y = Integer.valueOf(txtMove.getText(2, 3));
+                        // Checks to see if the piece can take an enemy piece by going to the given location
                         if (theModel.takePiece(x, y, piece)) {
+                            // Removes the piece from the grid
                             grid.getChildren().remove(piece.getPiece());
+                            // Sets the original space of the piece to not having a piece on it anymore
                             theModel.getSpaces().get(piece.getYPos() * 8 + piece.getXPos()).setHasPiece(false);
+                            // Sets the new space of the piece to having a piece
                             theModel.getSpaces().get(y * 8 + x).setHasPiece(true);
+                            // Sets the space of the taken piece to not having a piece anymore
                             theModel.getSpaces().get(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getYPos() * 8 + theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getXPos()).setHasPiece(false);
+                            // Removes the taken piece from the grid
                             grid.getChildren().remove(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)).getPiece());
+                            // Removes the taken piece from the list of enemy pieces
                             theModel.getBlackPieces().remove(theModel.getPieceBlack(theModel.pieceTakenBlack(x, y, piece)));
+                            // Updates the location of the piece to the new location
                             piece.updateLocation(x, y);
+                            // Adds the piece back to the grid at its new location
                             grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
                             lblTurn.setText("Red Player's Turn!");
+                            if (theModel.getBlackPieces().isEmpty()) {
+                                gameStarted = false;
+                                lblTurn.setText("Red Player Wins!");
+                            }
+                            // If the selected piece can take another piece, it will remain that player's turn.
+                            // Otherwise, it goes to the other player's turn
                             if (!theModel.checkTakeRed()) {
                                 lblTurn.setText("Black Player's Turn!");
                                 redTurn = false;
                             }
                         }
+                        // If a piece can be taken but the x,y coordinates to not correspond to the location necessary to take a piece, it will
+                        // alert the user that a piece can be taken and will not let the user move another piece
                         else if (theModel.checkTakeRed()) {
                             lblTurn.setText("One of your pieces can take another piece!");
                         }
+                        // Logic for the normal movement of a piece
                         else {
                             if (theModel.checkLocation(x, y, piece) == false) {
                                 lblTurn.setText("That piece cannot move there!");
@@ -588,14 +616,12 @@ public class CheckersController {
 //                        });
 //                    }
             }
-        for (Space space : theModel.getSpaces()) {
-            space.getSpace().setOnMouseClicked(event -> {
-                lblTurn.setText("" + space.getHasPiece());
-            });
-        }
+
+        // Logic is very similar to the red piece movement logic, the methods just need to be different because the black pieces and the red pieces move
+        // in opposite directions
         for (BlackPiece piece : theModel.getBlackPieces()) {
             piece.getPiece().setOnMouseClicked(mouseEvent -> {
-                if (!redTurn) {
+                if (!redTurn && gameStarted) {
                     int x = Integer.valueOf(txtMove.getText(0, 1));
                     int y = Integer.valueOf(txtMove.getText(2, 3));
                     if (theModel.takePiece(x, y, piece)) {
@@ -608,6 +634,10 @@ public class CheckersController {
                         piece.updateLocation(x, y);
                         grid.add(piece.getPiece(), piece.getXPos(), piece.getYPos());
                         lblTurn.setText("Black Player's Turn!");
+                        if (theModel.getRedPieces().isEmpty()) {
+                            gameStarted = false;
+                            lblTurn.setText("Red Player Wins!");
+                        }
                         if (!theModel.checkTakeBlack()) {
                             lblTurn.setText("Red Player's Turn!");
                             redTurn = true;
