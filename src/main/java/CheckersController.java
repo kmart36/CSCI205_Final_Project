@@ -3,13 +3,13 @@
  * Fall 2021
  * Instructor: Prof. Brian King
  *
- * Name: Katy Martinson
+ * Name: Phil Morgan, Katy Martinson, Kiera Egan, Doug Russo
  * Section: 9:30am
  * Date: 11/12/2021
  * Time: 10:11 AM
  *
  * Project: csci205_final_project
- * Package: PACKAGE_NAME
+ * Package: java
  * Class: CheckersController
  *
  * Description:
@@ -22,8 +22,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import CheckersModel.*;

@@ -3,13 +3,13 @@
  * Fall 2021
  * Instructor: Prof. Brian King
  *
- * Name: Doug Russo
+ * Name: Phil Morgan, Katy Martinson, Kiera Egan, Doug Russo
  * Section: CSCI205-02
  * Date: 11/23/21
  * Time: 6:52 PM
  *
  * Project: csci205_final_project
- * Package: PACKAGE_NAME
+ * Package: java
  * Class: CheckersModel
  *
  * ****************************************
