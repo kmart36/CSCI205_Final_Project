@@ -634,7 +634,7 @@ public class CheckersController {
                         lblTurn.setText("Black Player's Turn!");
                         if (theModel.getRedPieces().isEmpty()) {
                             gameStarted = false;
-                            lblTurn.setText("Red Player Wins!");
+                            lblTurn.setText("Black Player Wins!");
                         }
                         if (!theModel.checkTakeBlack()) {
                             lblTurn.setText("Red Player's Turn!");

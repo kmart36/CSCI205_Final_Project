@@ -39,4 +39,7 @@ java.io - Version 7 - https://docs.oracle.com/javase/7/docs/api/java/io/package-
 
 
 ## How to run it
-Click on the Gradle tab, open the "Tasks" folder, open the "Application" folder, and double-click the "run" task. 
+Click on the Gradle tab, open the "Tasks" folder, open the "Application" folder, and double-click the "run" task.  
+
+## Video Presentation  
+https://mediaspace.bucknell.edu/media/CSCI205%20Team01%20Final%20Project/1_qg2zr6zk 
